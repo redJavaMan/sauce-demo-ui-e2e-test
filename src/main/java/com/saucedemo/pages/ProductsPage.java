@@ -24,7 +24,7 @@ public class ProductsPage {
         }
     }
 
-    public CartPage clickCartButton(){
+    public CartPage addProductToCart(){
         driver.findElement(cartButton).click();
         return new CartPage(driver);
     }

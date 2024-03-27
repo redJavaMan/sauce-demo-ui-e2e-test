@@ -12,7 +12,7 @@ public class CheckOutPage {
     public CheckOutPage(WebDriver driver) {
         this.driver=driver;
     }
-    public ConfirmationPage enterInformation(String firstName,String lastName,String postalCode){
+    public ConfirmationPage deliveryDetails(String firstName, String lastName, String postalCode){
         driver.findElement(firstNameTextBox).sendKeys(firstName);
         driver.findElement(lastNameTextBox).sendKeys(lastName);
         driver.findElement(postalCodeTextBox).sendKeys(postalCode);

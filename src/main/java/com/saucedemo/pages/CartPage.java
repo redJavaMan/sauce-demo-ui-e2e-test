@@ -13,7 +13,7 @@ public class CartPage {
     public String getcartProduct(int p){
         return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])["+p+"]")).getText();
     }
-    public CheckOutPage clickCheckOut(){
+    public CheckOutPage checkOut(){
         driver.findElement(checkOutButton).click();
         return new CheckOutPage(driver);
     }

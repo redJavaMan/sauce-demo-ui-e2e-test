@@ -10,7 +10,7 @@ public class ConfirmationPage {
     public ConfirmationPage(WebDriver driver) {
         this.driver=driver;
     }
-    public OrderStatusPage clickFinish(){
+    public OrderStatusPage finish(){
         driver.findElement(finishButton).click();
         return new OrderStatusPage(driver);
     }
