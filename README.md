@@ -1,129 +1,124 @@
-# SauceDemo UI Automation Testing  
+# SauceDemo Test Automation Framework
 
-## Overview  
-This repository contains automated tests for the SauceDemo website (https://www.saucedemo.com/). The test suite focuses on validating the shopping cart functionality, including adding products to the cart, verifying product details, and completing the checkout process. The framework is built using Selenium WebDriver, Java, TestNG, and the Page Object Model (POM) design pattern.  
+This project is a Selenium-based test automation framework for [SauceDemo](https://www.saucedemo.com/), demonstrating automated end-to-end testing of an e-commerce website using the Page Object Model design pattern.
 
-## Project Repository  
-`saucedemo-ui-automation`  
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Prerequisites](#prerequisites)
+- [Setup and Installation](#setup-and-installation)
+- [Running Tests](#running-tests)
+- [Framework Architecture](#framework-architecture)
+- [Test Scenarios](#test-scenarios)
+- [Contributing](#contributing)
 
-## Tech Stack  
-- Java  
-- Selenium WebDriver  
-- TestNG  
-- Maven  
-- Allure Reporting Framework  
+## 🔍 Overview
 
-## Prerequisites  
-- Java JDK 11 or higher  
-- Maven 3.8.x or higher  
-- Chrome/Firefox browser  
-- Allure command line tool (for report generation)  
+This test automation framework demonstrates automated testing of the SauceDemo e-commerce website, covering user journeys from login to checkout. It follows the Page Object Model pattern to create a maintainable and scalable test framework.
 
-## Project Structure  
-```  
-src  
-├── main  
-│   └── java  
-│       └── com  
-│           └── saucedemo  
-│               ├── pages  
-│               │   └── [Page Objects]  
-│               └── utils  
-│                   └── [Utility Classes]  
-└── test  
-    └── java  
-        └── com  
-            └── saucedemo  
-                └── test  
-                    ├── AddToCartTest.java  
-                    └── [Other Test Classes]  
-```  
+## 📁 Project Structure
 
-## Installation & Setup  
-```bash  
-# Clone the repository  
-git clone https://github.com/your-username/saucedemo-ui-automation.git  
+```
+saucedemo-automation/
+├── src/
+│   ├── main/java/com/saucedemo/pages/
+│   │   ├── CartPage.java
+│   │   ├── CheckOutPage.java
+│   │   ├── ConfirmationPage.java
+│   │   ├── LoginPage.java
+│   │   ├── OrderStatusPage.java
+│   │   └── ProductsPage.java
+│   └── test/java/com/saucedemo/
+│       ├── base/
+│       │   └── BaseTest.java
+│       └── test/
+│           └── AddToCartTest.java
+├── TestNG.xml
+├── pom.xml
+└── README.md
+```
 
-# Navigate to project directory  
-cd saucedemo-ui-automation  
+## 🛠️ Technologies Used
 
-# Install dependencies and run tests  
-mvn clean test  
-```  
+- Java 17
+- Selenium WebDriver 4.18.1
+- TestNG 7.9.0
+- Maven
 
-## Test Configuration  
-```xml  
-<?xml version="1.0" encoding="UTF-8"?>  
-<suite name="SauceDemo" parallel="tests" thread-count="2">  
-    <listeners>  
-        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>  
-    </listeners>  
-    <test name="Test Group 1">  
-        <classes>  
-            <class name="com.saucedemo.test.AddToCartTest" />  
-            <!-- Add other test classes here -->  
-        </classes>  
-    </test>  
-</suite>  
-```  
+## ✅ Prerequisites
 
-## Test Cases  
-### Shopping Cart Tests  
-- Add items to the cart  
-- Verify product details in the cart  
-- Complete the checkout process  
-- Validate order confirmation message  
+- Java JDK 17 or higher
+- Maven 3.6 or higher
+- Chrome browser
+- ChromeDriver (compatible with your Chrome version)
 
-## Running Tests  
-```bash  
-# Run all tests with default configuration  
-mvn clean test  
+## 🚀 Setup and Installation
 
-# Run tests with Allure reporting  
-mvn clean test allure:serve  
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/saucedemo-automation.git
+   cd saucedemo-automation
+   ```
 
-# Generate Allure report  
-allure generate target/allure-results --clean -o target/allure-report  
-```  
+2. Install dependencies:
+   ```
+   mvn clean install
+   ```
 
-## Parallel Execution  
-The test suite is configured to run in parallel with a thread count of 2. This is configured in the `testng.xml` file:  
-- Parallel execution mode: `parallel="tests"`  
-- Thread count: `thread-count="2"`  
+## ▶️ Running Tests
 
-## Reporting  
-The project uses Allure for test reporting. To view the reports:  
-1. Run tests with Allure:  
-   ```bash  
-   mvn clean test  
-   ```  
-2. Generate and open the report:  
-   ```bash  
-   allure serve target/allure-results  
-   ```  
+### Using Maven
 
-## Key Features  
-- Page Object Model (POM) implementation  
-- Parallel test execution  
-- Allure reporting integration  
-- Cross-browser testing support  
-- Screenshot capture on test failure  
+Run all tests:
+```
+mvn test
+```
 
-## Contributing  
-1. Fork the repository.  
-2. Create your feature branch:  
-   ```bash  
-   git checkout -b feature/AmazingFeature  
-   ```  
-3. Commit your changes:  
-   ```bash  
-   git commit -m 'Add some AmazingFeature'  
-   ```  
-4. Push to the branch:  
-   ```bash  
-   git push origin feature/AmazingFeature  
-   ```  
-5. Open a Pull Request.  
+Run specific test class:
+```
+mvn test -Dtest=AddToCartTest
+```
 
-## Author  
-   Mohammed Lukmanudhin - [redJavaMan](https://github.com/redJavaMan)
+### Using TestNG XML
+
+Run the TestNG suite:
+```
+mvn test -DsuiteXmlFile=TestNG.xml
+```
+
+## 🏗️ Framework Architecture
+
+### Page Object Model (POM)
+
+This framework implements the Page Object Model design pattern, where each web page is represented by a class that encapsulates the page's elements and interactions.
+
+### Key Components:
+
+1. **Page Classes**: Represent web pages with elements and methods to interact with them
+2. **BaseTest**: Sets up and tears down the test environment
+3. **Test Classes**: Contain test methods that use page objects to perform actions and assertions
+
+## 📝 Test Scenarios
+
+Currently, the framework covers the following test scenario:
+
+### E2E Order Placement (successfullOrderValidation)
+
+1. Login to SauceDemo with valid credentials
+2. Add products to cart (Sauce Labs Backpack and Sauce Labs Bike Light)
+3. Navigate to cart and verify products
+4. Proceed to checkout and enter shipping information
+5. Complete the order
+6. Verify successful order confirmation message
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## Author
+Mohammed Lukmanudin M - [GitHub Profile](https://github.com/redJavaMan)
